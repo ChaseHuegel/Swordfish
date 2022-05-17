@@ -7,13 +7,13 @@ namespace Swordfish.Library.Util
         public static byte[] Salt(int length)
         {
             byte[] buffer = new byte[length];
-            new RNGCryptoServiceProvider().GetBytes(buffer);
+            RandomNumberGenerator.Create().GetBytes(buffer);
             return buffer;
         }
 
         public static byte[] Hash(byte[] value)
         {
-            return new SHA256Managed().ComputeHash(value);
+            return SHA256.Create().ComputeHash(value);
         }
 
         public static byte[] SaltedHash(byte[] value, int saltLength)
